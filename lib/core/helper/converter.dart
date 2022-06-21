@@ -1,16 +1,19 @@
+import 'dart:convert';
+
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
 
 import '../error/exceptions.dart';
 
-@injectable
-class Converter {
-  Either<Failure, String> convertCity(String city) {
+@Injectable(as: Converter<String, Either<Failure, String>>)
+class CityConverter extends Converter<String, Either<Failure, String>> {
+  @override
+  Either<Failure, String> convert(String input) {
     try {
-      return Right(city);
+      return Right(input);
     } on FormatException {
       return Left(InvalidInputFailure());
-    }on Object {
+    } on Object {
       return Left(InvalidInputFailure());
     }
   }
@@ -18,6 +21,6 @@ class Converter {
 
 class InvalidInputFailure extends Failure {
   @override
-  // TODO: implement props
-  List<Object?> get props => throw UnimplementedError();
+  
+  List<Object?> get props => [];
 }

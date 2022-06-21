@@ -2,8 +2,6 @@ part of 'weather_bloc.dart';
 
 @freezed
 class WeatherState with _$WeatherState {
-  const factory WeatherState.initial({required Weather weather}) =
-      _WeatherInitial;
   const factory WeatherState.loading({required Weather weather}) =
       _WeatherLoading;
   const factory WeatherState.loaded({required Weather weather}) =

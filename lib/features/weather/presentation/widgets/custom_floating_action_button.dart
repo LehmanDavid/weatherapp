@@ -12,22 +12,33 @@ FloatingActionButton customFloatingActionButton(BuildContext context) {
         context: context,
         builder: (_) {
           return AlertDialog(
-            title: const Text('Enter the city'),
+            backgroundColor: const Color.fromARGB(255, 52, 101, 156),
+            title: const Text(
+              'Yout city: ',
+              style: TextStyle(color: Colors.white),
+            ),
             content: TextField(
               onChanged: (value) => city = value,
-              decoration:
-                  const InputDecoration(hintText: "Input the city here: "),
+              decoration: const InputDecoration(
+                hintText: "Input the city here: ",
+                hintStyle: TextStyle(color: Colors.white),
+              ),
               controller: textController,
+              style: const TextStyle(color: Colors.white),
             ),
             actions: [
               TextButton(
-                  onPressed: () {
-                    context
-                        .read<WeatherBloc>()
-                        .add(WeatherEvent.loadApi(city: city));
-                    Navigator.pop(context);
-                  },
-                  child: const Text('SUBMIT'))
+                onPressed: () {
+                  context
+                      .read<WeatherBloc>()
+                      .add(WeatherEvent.loadApi(city: city));
+                  Navigator.pop(context);
+                },
+                child: const Text(
+                  'SUBMIT',
+                  style: TextStyle(color: Colors.white, fontSize: 15.0),
+                ),
+              )
             ],
           );
         },

@@ -1,12 +1,13 @@
 import 'dart:async';
+import 'dart:convert';
 
 import 'package:bloc/bloc.dart';
+import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
+import '../../../../core/error/exceptions.dart';
 import '../../domain/entities/weather_entity.dart';
 import '../../domain/usecases/get_weather_usecase.dart';
-
-import '../../../../core/helper/converter.dart';
 
 part 'weather_bloc.freezed.dart';
 part 'weather_event.dart';
@@ -15,18 +16,15 @@ part 'weather_state.dart';
 @injectable
 class WeatherBloc extends Bloc<WeatherEvent, WeatherState> {
   final GetWeatherUsecase _weatherUsecase;
-  final Converter _converter;
-  WeatherBloc({
-    required GetWeatherUsecase weatherUsecase,
-    required Converter converter,
-  })  : _weatherUsecase = weatherUsecase,
-        _converter = converter,
-        super(WeatherState.loaded(weather: Weather.mockWeather)) {
+  final Converter<String, Either<Failure, String>> _converter;
+
+  WeatherBloc(this._weatherUsecase, this._converter)
+      : super(WeatherState.loaded(weather: Weather.mockWeather)) {
     on<WeatherEvent>(getWeather);
   }
 
   FutureOr<void> getWeather(WeatherEvent event, emit) async {
-    final inputEither = _converter.convertCity(event.city);
+    final inputEither = Right(event.city);
 
     await inputEither.fold(
       (failure) async => emit(WeatherState.error(

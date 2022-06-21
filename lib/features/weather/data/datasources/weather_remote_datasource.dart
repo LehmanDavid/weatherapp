@@ -16,11 +16,11 @@ class WeatherRemoteDatasourceImpl implements WeatherRemoteDatasource {
   @override
   Future<WeatherModel> getWeather(String city) async {
     final response = await dio.get(
-        'http://api.weatherapi.com/v1/current.json?key=6bd5a41f756d4100b3365659221306&q=$city&aqi=no');
+      'http://api.weatherapi.com/v1/current.json?q=$city&aqi=no');
     if (response.statusCode == 200) {
       return WeatherModel.fromJSON(response.data);
     } else {
-      throw ServerException();
+      Error.throwWithStackTrace(ServerException(), StackTrace.current);
     }
   }
 }

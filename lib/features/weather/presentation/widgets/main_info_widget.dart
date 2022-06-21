@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:weatherapp/core/consts.dart';
+import '../../../../core/consts.dart';
 
 import '../../domain/entities/weather_entity.dart';
 import 'custom_floating_action_button.dart';

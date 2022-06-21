@@ -31,6 +31,7 @@ class HomePage extends StatelessWidget {
           builder: (context, state) {
             var weather = state.weather;
             return Stack(
+              
               alignment: Alignment.center,
               children: [
                 MainInfoWidget(weather: weather),
@@ -40,7 +41,7 @@ class HomePage extends StatelessWidget {
                     return false;
                   },
                 ))
-                  const CustomLoadingWidget(),
+                 const Positioned.fill(child:  CustomLoadingWidget()),
               ],
             );
           },
