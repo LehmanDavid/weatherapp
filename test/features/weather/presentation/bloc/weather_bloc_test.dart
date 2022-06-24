@@ -23,7 +23,9 @@ void main() {
     mockGetWeatherUsecase = MockGetWeatherUsecase();
     mockCityConverter = MockCityConverter();
 
-    bloc = WeatherBloc(mockGetWeatherUsecase, mockCityConverter);
+    bloc = WeatherBloc(
+      mockGetWeatherUsecase,
+    );
   });
 
   test('initital State should be WeatherState.loaded of mockWeather', () async {
@@ -56,7 +58,9 @@ void main() {
         when(() => mockGetWeatherUsecase.call(const Params(city: tCity)))
             .thenAnswer((_) async => Right(tWeather));
 
-        return WeatherBloc(mockGetWeatherUsecase, mockCityConverter);
+        return WeatherBloc(
+          mockGetWeatherUsecase,
+        );
       },
       act: (bloc) => bloc.add(const WeatherEvent.loadApi(city: tCity)),
       expect: () => [

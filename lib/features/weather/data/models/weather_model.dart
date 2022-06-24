@@ -1,7 +1,7 @@
 import '../../domain/entities/weather_entity.dart';
 
 class WeatherModel extends Weather {
-  WeatherModel(
+  const WeatherModel(
       {required cityName,
       required icon,
       required condition,
