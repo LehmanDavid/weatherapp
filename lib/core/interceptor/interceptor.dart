@@ -1,14 +1,19 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dio/dio.dart';
+import '../../features/weather/data/repositories/token_repository_impl.dart';
 
 class MyInterceptor extends Interceptor {
-  FirebaseFirestore tokenInstance = FirebaseFirestore.instance;
+  final TokenRepositoryImpl tokenRepositoryImpl = TokenRepositoryImpl();
+  int indexOfToken = 0;
+
   Dio addInterceptors(Dio dio) {
     return dio
-      ..interceptors.add(InterceptorsWrapper(
+      ..interceptors.add(
+        InterceptorsWrapper(
           onRequest: requestInterceptor,
           onResponse: responseInterceptor,
-          onError: errorInterceptor));
+          onError: errorInterceptor,
+        ),
+      );
   }
 
   void responseInterceptor(Response response,
@@ -17,28 +22,32 @@ class MyInterceptor extends Interceptor {
   }
 
   void errorInterceptor(DioError error, ErrorInterceptorHandler err) async {
-    err.next(error);
+    var updateId = '';
+    var listOfTokens = await tokenRepositoryImpl.getValidTokens();
+    if (listOfTokens.isNotEmpty) {
+      updateId = listOfTokens[indexOfToken].id;
+    } else {
+      err.reject(error);
+    }
     if (error.response?.statusCode == 401) {
-      await getData();
-    } else {}
-  }
-
-  Future<void> getData() async {
-    QuerySnapshot querySnapshot =
-        await tokenInstance.collection('tokens').get();
-    final allData = querySnapshot.docs.map((doc) => doc.data()).toList();
-    print(allData);
+      await tokenRepositoryImpl.updateValidity(updateId);
+      indexOfToken++;
+    } else {
+      err.next(error);
+    }
   }
 
   void requestInterceptor(
-      RequestOptions options, RequestInterceptorHandler handler) {
-    String key = '6bd5a41f756d4100b3365659221306';
-    try {
-      var newOptions = Map<String, dynamic>.from(options.queryParameters);
-      newOptions['key'] = key;
-      handler.next(options.copyWith(queryParameters: newOptions));
-    } catch (e, stacktrace) {
-      print("$e  and $stacktrace");
+      RequestOptions options, RequestInterceptorHandler handler) async {
+    var listOfTokens = await tokenRepositoryImpl.getValidTokens();
+    var validToken = '';
+    if (listOfTokens.isNotEmpty) {
+      validToken = listOfTokens[indexOfToken].token;
+    } else {
+      handler.next(options);
     }
+    var newOptions = Map<String, dynamic>.from(options.queryParameters);
+    newOptions['key'] = validToken;
+    handler.next(options.copyWith(queryParameters: newOptions));
   }
 }

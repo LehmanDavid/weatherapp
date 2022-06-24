@@ -217,7 +217,6 @@ mixin _$WeatherState {
   Weather get weather => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Weather weather) initial,
     required TResult Function(Weather weather) loading,
     required TResult Function(Weather weather) loaded,
     required TResult Function(Weather weather, String message) error,
@@ -225,7 +224,6 @@ mixin _$WeatherState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(Weather weather)? initial,
     TResult Function(Weather weather)? loading,
     TResult Function(Weather weather)? loaded,
     TResult Function(Weather weather, String message)? error,
@@ -233,7 +231,6 @@ mixin _$WeatherState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Weather weather)? initial,
     TResult Function(Weather weather)? loading,
     TResult Function(Weather weather)? loaded,
     TResult Function(Weather weather, String message)? error,
@@ -242,7 +239,6 @@ mixin _$WeatherState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_WeatherInitial value) initial,
     required TResult Function(_WeatherLoading value) loading,
     required TResult Function(_WeatherLoaded value) loaded,
     required TResult Function(_WeatherError value) error,
@@ -250,7 +246,6 @@ mixin _$WeatherState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_WeatherInitial value)? initial,
     TResult Function(_WeatherLoading value)? loading,
     TResult Function(_WeatherLoaded value)? loaded,
     TResult Function(_WeatherError value)? error,
@@ -258,7 +253,6 @@ mixin _$WeatherState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_WeatherInitial value)? initial,
     TResult Function(_WeatherLoading value)? loading,
     TResult Function(_WeatherLoaded value)? loaded,
     TResult Function(_WeatherError value)? error,
@@ -298,157 +292,6 @@ class _$WeatherStateCopyWithImpl<$Res> implements $WeatherStateCopyWith<$Res> {
               as Weather,
     ));
   }
-}
-
-/// @nodoc
-abstract class _$$_WeatherInitialCopyWith<$Res>
-    implements $WeatherStateCopyWith<$Res> {
-  factory _$$_WeatherInitialCopyWith(
-          _$_WeatherInitial value, $Res Function(_$_WeatherInitial) then) =
-      __$$_WeatherInitialCopyWithImpl<$Res>;
-  @override
-  $Res call({Weather weather});
-}
-
-/// @nodoc
-class __$$_WeatherInitialCopyWithImpl<$Res>
-    extends _$WeatherStateCopyWithImpl<$Res>
-    implements _$$_WeatherInitialCopyWith<$Res> {
-  __$$_WeatherInitialCopyWithImpl(
-      _$_WeatherInitial _value, $Res Function(_$_WeatherInitial) _then)
-      : super(_value, (v) => _then(v as _$_WeatherInitial));
-
-  @override
-  _$_WeatherInitial get _value => super._value as _$_WeatherInitial;
-
-  @override
-  $Res call({
-    Object? weather = freezed,
-  }) {
-    return _then(_$_WeatherInitial(
-      weather: weather == freezed
-          ? _value.weather
-          : weather // ignore: cast_nullable_to_non_nullable
-              as Weather,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$_WeatherInitial implements _WeatherInitial {
-  const _$_WeatherInitial({required this.weather});
-
-  @override
-  final Weather weather;
-
-  @override
-  String toString() {
-    return 'WeatherState.initial(weather: $weather)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_WeatherInitial &&
-            const DeepCollectionEquality().equals(other.weather, weather));
-  }
-
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(weather));
-
-  @JsonKey(ignore: true)
-  @override
-  _$$_WeatherInitialCopyWith<_$_WeatherInitial> get copyWith =>
-      __$$_WeatherInitialCopyWithImpl<_$_WeatherInitial>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(Weather weather) initial,
-    required TResult Function(Weather weather) loading,
-    required TResult Function(Weather weather) loaded,
-    required TResult Function(Weather weather, String message) error,
-  }) {
-    return initial(weather);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(Weather weather)? initial,
-    TResult Function(Weather weather)? loading,
-    TResult Function(Weather weather)? loaded,
-    TResult Function(Weather weather, String message)? error,
-  }) {
-    return initial?.call(weather);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Weather weather)? initial,
-    TResult Function(Weather weather)? loading,
-    TResult Function(Weather weather)? loaded,
-    TResult Function(Weather weather, String message)? error,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial(weather);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_WeatherInitial value) initial,
-    required TResult Function(_WeatherLoading value) loading,
-    required TResult Function(_WeatherLoaded value) loaded,
-    required TResult Function(_WeatherError value) error,
-  }) {
-    return initial(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_WeatherInitial value)? initial,
-    TResult Function(_WeatherLoading value)? loading,
-    TResult Function(_WeatherLoaded value)? loaded,
-    TResult Function(_WeatherError value)? error,
-  }) {
-    return initial?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_WeatherInitial value)? initial,
-    TResult Function(_WeatherLoading value)? loading,
-    TResult Function(_WeatherLoaded value)? loaded,
-    TResult Function(_WeatherError value)? error,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _WeatherInitial implements WeatherState {
-  const factory _WeatherInitial({required final Weather weather}) =
-      _$_WeatherInitial;
-
-  @override
-  Weather get weather => throw _privateConstructorUsedError;
-  @override
-  @JsonKey(ignore: true)
-  _$$_WeatherInitialCopyWith<_$_WeatherInitial> get copyWith =>
-      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -518,7 +361,6 @@ class _$_WeatherLoading implements _WeatherLoading {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Weather weather) initial,
     required TResult Function(Weather weather) loading,
     required TResult Function(Weather weather) loaded,
     required TResult Function(Weather weather, String message) error,
@@ -529,7 +371,6 @@ class _$_WeatherLoading implements _WeatherLoading {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(Weather weather)? initial,
     TResult Function(Weather weather)? loading,
     TResult Function(Weather weather)? loaded,
     TResult Function(Weather weather, String message)? error,
@@ -540,7 +381,6 @@ class _$_WeatherLoading implements _WeatherLoading {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Weather weather)? initial,
     TResult Function(Weather weather)? loading,
     TResult Function(Weather weather)? loaded,
     TResult Function(Weather weather, String message)? error,
@@ -555,7 +395,6 @@ class _$_WeatherLoading implements _WeatherLoading {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_WeatherInitial value) initial,
     required TResult Function(_WeatherLoading value) loading,
     required TResult Function(_WeatherLoaded value) loaded,
     required TResult Function(_WeatherError value) error,
@@ -566,7 +405,6 @@ class _$_WeatherLoading implements _WeatherLoading {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_WeatherInitial value)? initial,
     TResult Function(_WeatherLoading value)? loading,
     TResult Function(_WeatherLoaded value)? loaded,
     TResult Function(_WeatherError value)? error,
@@ -577,7 +415,6 @@ class _$_WeatherLoading implements _WeatherLoading {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_WeatherInitial value)? initial,
     TResult Function(_WeatherLoading value)? loading,
     TResult Function(_WeatherLoaded value)? loaded,
     TResult Function(_WeatherError value)? error,
@@ -669,7 +506,6 @@ class _$_WeatherLoaded implements _WeatherLoaded {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Weather weather) initial,
     required TResult Function(Weather weather) loading,
     required TResult Function(Weather weather) loaded,
     required TResult Function(Weather weather, String message) error,
@@ -680,7 +516,6 @@ class _$_WeatherLoaded implements _WeatherLoaded {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(Weather weather)? initial,
     TResult Function(Weather weather)? loading,
     TResult Function(Weather weather)? loaded,
     TResult Function(Weather weather, String message)? error,
@@ -691,7 +526,6 @@ class _$_WeatherLoaded implements _WeatherLoaded {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Weather weather)? initial,
     TResult Function(Weather weather)? loading,
     TResult Function(Weather weather)? loaded,
     TResult Function(Weather weather, String message)? error,
@@ -706,7 +540,6 @@ class _$_WeatherLoaded implements _WeatherLoaded {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_WeatherInitial value) initial,
     required TResult Function(_WeatherLoading value) loading,
     required TResult Function(_WeatherLoaded value) loaded,
     required TResult Function(_WeatherError value) error,
@@ -717,7 +550,6 @@ class _$_WeatherLoaded implements _WeatherLoaded {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_WeatherInitial value)? initial,
     TResult Function(_WeatherLoading value)? loading,
     TResult Function(_WeatherLoaded value)? loaded,
     TResult Function(_WeatherError value)? error,
@@ -728,7 +560,6 @@ class _$_WeatherLoaded implements _WeatherLoaded {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_WeatherInitial value)? initial,
     TResult Function(_WeatherLoading value)? loading,
     TResult Function(_WeatherLoaded value)? loaded,
     TResult Function(_WeatherError value)? error,
@@ -830,7 +661,6 @@ class _$_WeatherError implements _WeatherError {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Weather weather) initial,
     required TResult Function(Weather weather) loading,
     required TResult Function(Weather weather) loaded,
     required TResult Function(Weather weather, String message) error,
@@ -841,7 +671,6 @@ class _$_WeatherError implements _WeatherError {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(Weather weather)? initial,
     TResult Function(Weather weather)? loading,
     TResult Function(Weather weather)? loaded,
     TResult Function(Weather weather, String message)? error,
@@ -852,7 +681,6 @@ class _$_WeatherError implements _WeatherError {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Weather weather)? initial,
     TResult Function(Weather weather)? loading,
     TResult Function(Weather weather)? loaded,
     TResult Function(Weather weather, String message)? error,
@@ -867,7 +695,6 @@ class _$_WeatherError implements _WeatherError {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_WeatherInitial value) initial,
     required TResult Function(_WeatherLoading value) loading,
     required TResult Function(_WeatherLoaded value) loaded,
     required TResult Function(_WeatherError value) error,
@@ -878,7 +705,6 @@ class _$_WeatherError implements _WeatherError {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_WeatherInitial value)? initial,
     TResult Function(_WeatherLoading value)? loading,
     TResult Function(_WeatherLoaded value)? loaded,
     TResult Function(_WeatherError value)? error,
@@ -889,7 +715,6 @@ class _$_WeatherError implements _WeatherError {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_WeatherInitial value)? initial,
     TResult Function(_WeatherLoading value)? loading,
     TResult Function(_WeatherLoaded value)? loaded,
     TResult Function(_WeatherError value)? error,
