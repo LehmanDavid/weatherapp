@@ -1,27 +1,20 @@
-import 'dart:convert';
-
 import 'package:bloc_test/bloc_test.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:weatherapp/core/error/exceptions.dart';
 import 'package:weatherapp/features/weather/domain/entities/weather_entity.dart';
 import 'package:weatherapp/features/weather/domain/usecases/get_weather_usecase.dart';
 import 'package:weatherapp/features/weather/presentation/bloc/weather_bloc.dart';
 
 class MockGetWeatherUsecase extends Mock implements GetWeatherUsecase {}
 
-class MockCityConverter extends Mock
-    implements Converter<String, Either<Failure, String>> {}
 
 void main() {
   late MockGetWeatherUsecase mockGetWeatherUsecase;
-  late MockCityConverter mockCityConverter;
   late WeatherBloc bloc;
 
   setUpAll(() {
     mockGetWeatherUsecase = MockGetWeatherUsecase();
-    mockCityConverter = MockCityConverter();
 
     bloc = WeatherBloc(
       mockGetWeatherUsecase,
@@ -53,8 +46,6 @@ void main() {
     blocTest<WeatherBloc, WeatherState>(
       'Emits Weather Loading and WeatherLoaded when successfull',
       build: () {
-        when(() => mockCityConverter.convert(any()))
-            .thenReturn(const Right(tCity));
         when(() => mockGetWeatherUsecase.call(const Params(city: tCity)))
             .thenAnswer((_) async => Right(tWeather));
 
