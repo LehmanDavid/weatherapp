@@ -29,7 +29,7 @@ class Weather extends Equatable {
     lastUpdate: DateTime.now(),
   );
 
-  Weather({
+  const Weather({
     required this.cityName,
     required this.icon,
     required this.condition,

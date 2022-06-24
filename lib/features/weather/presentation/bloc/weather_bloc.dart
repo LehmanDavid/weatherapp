@@ -5,7 +5,6 @@ import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
-import '../../../../core/error/exceptions.dart';
 import '../../domain/entities/weather_entity.dart';
 import '../../domain/usecases/get_weather_usecase.dart';
 
@@ -16,9 +15,8 @@ part 'weather_state.dart';
 @injectable
 class WeatherBloc extends Bloc<WeatherEvent, WeatherState> {
   final GetWeatherUsecase _weatherUsecase;
-  final Converter<String, Either<Failure, String>> _converter;
 
-  WeatherBloc(this._weatherUsecase, this._converter)
+  WeatherBloc(this._weatherUsecase)
       : super(WeatherState.loaded(weather: Weather.mockWeather)) {
     on<WeatherEvent>(getWeather);
   }

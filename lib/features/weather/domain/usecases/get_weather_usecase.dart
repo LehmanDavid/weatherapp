@@ -1,9 +1,9 @@
+import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 import 'package:injectable/injectable.dart';
-import '../../../../core/error/exceptions.dart';
-import 'package:dartz/dartz.dart';
-import '../../../../core/helper/usecase.dart';
 
+import '../../../../core/error/exceptions.dart';
+import '../../../../core/helper/usecase.dart';
 import '../entities/weather_entity.dart';
 import '../repositories/weather_repository.dart';
 @injectable
