@@ -57,7 +57,7 @@ void main() {
           data: jsonDecode(fixture('weather.json')),
           requestOptions: RequestOptions(
             path:
-                'http://api.weatherapi.com/v1/current.json?key=6bd5a41f756d4100b3365659221306&q=$tCity&aqi=no',
+                'http://api.weatherapi.com/v1/current.json?q=$tCity&aqi=no',
           ),
         ),
       );
@@ -73,7 +73,7 @@ void main() {
           data: jsonDecode(fixture('weather.json')),
           requestOptions: RequestOptions(
             path:
-                'http://api.weatherapi.com/v1/current.json?key=6bd5a41f756d4100b3365659221306&q=$tCity&aqi=no',
+                'http://api.weatherapi.com/v1/current.json?q=$tCity&aqi=no',
           ),
         ),
       );
