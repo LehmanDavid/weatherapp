@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import '../../../../core/consts.dart';
-
 import '../../domain/entities/weather_entity.dart';
 import 'custom_floating_action_button.dart';
 import 'detail_weather_info_widget.dart';
@@ -19,29 +18,31 @@ class MainInfoWidget extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
-        BasicWeatherInfoWidget(
-          city: weather.cityName,
-          date: DateTime.now().dayWithWeekday,
-          iconUrl: 'https:${weather.icon}',
-          weatherCondition: weather.condition,
-          temperature: '${weather.temp}',
-          wind: '${weather.wind}',
-          humidity: '${weather.humidity}',
-          windDir: weather.windDir,
+        basicWeatherInfo(
+          context,
+          weather.cityName,
+          DateTime.now().dayWithWeekday,
+          weather.icon,
+          weather.condition,
+          '${weather.temp}',
+          '${weather.wind}',
+          '${weather.humidity}',
+          weather.windDir,
         ),
         const SizedBox(
           height: 15.0,
         ),
-        DetailWeatherInfoWidget(
-          gust: weather.gust.toString(),
-          uv: weather.uv.toString(),
-          pressure: weather.pressure.toString(),
-          precipation: weather.precip.toString(),
+        detailWeatherInfo(
+          context,
+          gust: '${weather.gust}',
+          uv: '${weather.uv}',
+          pressure: '${weather.pressure}',
+          precipation: '${weather.precip}',
           lastUpdate: DateTime.now().convertedDateTime,
-          wind: weather.wind.toString(),
+          wind: '${weather.wind}',
         ),
         Padding(
-          padding: const EdgeInsets.only(right: 15.0, top: 5.0),
+          padding: const EdgeInsets.only(right: 15.0, top: 15.0),
           child: customFloatingActionButton(context),
         ),
       ],

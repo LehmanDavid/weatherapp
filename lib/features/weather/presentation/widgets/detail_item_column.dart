@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class DetailItemColumn extends StatelessWidget {
@@ -25,7 +26,8 @@ class DetailItemColumn extends StatelessWidget {
           value,
           style: TextStyle(
             color: Colors.white,
-            fontSize: type == 'Last Update' ? 15.0 : 20.0,
+            fontSize:
+                type == 'last_update'.tr() ? 15.0 : 20.0,
           ),
         ),
       ],
