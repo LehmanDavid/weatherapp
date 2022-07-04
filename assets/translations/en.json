@@ -1,0 +1,21 @@
+{
+    "sunny" : " Sunny",
+    "wind" : "Wind",
+    "humidity" : "Humidity",
+    "wind_direction" : "Wind Direction",
+    "gust" : "Gust",
+    "uv" : "UV",
+    "pressure" : "Pressure",
+    "precipation" : "Precipation",
+    "last_update" : "Last Update",
+    "choose_lang": "Choose your language: ",
+    "En": "EN",
+    "Ru": "Ru",
+    "submit": "SUBMIT",
+    "your_city": "Your city: ",  
+    "input_city": "Input your city here:", 
+    "km/h": "km/h",
+    "hpa": "hpa",
+    "mm": "mm",
+    "Clear": "Clear"
+}

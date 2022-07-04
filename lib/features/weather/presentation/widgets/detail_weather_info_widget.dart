@@ -1,48 +1,51 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 import 'detail_item_column.dart';
 
-class DetailWeatherInfoWidget extends StatelessWidget {
-  final String gust;
-  final String uv;
-  final String pressure;
-  final String precipation;
-  final String lastUpdate;
-  final String wind;
-  const DetailWeatherInfoWidget({
-    Key? key,
-    required this.gust,
-    required this.uv,
-    required this.pressure,
-    required this.precipation,
-    required this.lastUpdate,
-    required this.wind,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            DetailItemColumn(type: 'Gust', value: '$gust kp/h'),
-            DetailItemColumn(type: 'UV', value: uv),
-            DetailItemColumn(type: 'Wind', value: '$wind km/h')
-          ],
-        ),
-        const SizedBox(
-          height: 15.0,
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            DetailItemColumn(type: 'Pressure', value: '$pressure hpa'),
-            DetailItemColumn(type: 'Precipitatoin', value: '$precipation mm'),
-            DetailItemColumn(type: 'Last Update', value: lastUpdate),
-          ],
-        ),
-      ],
-    );
-  }
+Column detailWeatherInfo(
+  BuildContext context, {
+  required gust,
+  required uv,
+  required pressure,
+  required precipation,
+  required lastUpdate,
+  required wind,
+}) {
+  return Column(
+    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+    children: [
+      Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          DetailItemColumn(
+            type: 'gust'.tr(),
+            value: '$gust km/h',
+          ),
+          DetailItemColumn(
+            type: 'uv'.tr(),
+            value: uv,
+          ),
+          DetailItemColumn(
+            type: 'wind'.tr(),
+            value: '$wind km/h',
+          ),
+        ],
+      ),
+      const SizedBox(
+        height: 15.0,
+      ),
+      Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          DetailItemColumn(type: 'pressure'.tr(), value: '$pressure hpa'),
+          DetailItemColumn(type: 'precipation'.tr(), value: '$precipation mm'),
+          DetailItemColumn(
+            type: 'last_update'.tr(),
+            value: lastUpdate,
+          ),
+        ],
+      ),
+    ],
+  );
 }

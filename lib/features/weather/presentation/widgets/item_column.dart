@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class ItemColumn extends StatelessWidget {
@@ -19,7 +20,7 @@ class ItemColumn extends StatelessWidget {
         SizedBox(
           height: 35,
           child:
-              Image.asset(iconUrl, color: type == 'Wind' ? Colors.white : null),
+              Image.asset(iconUrl, color: type == 'wind'.tr() ? Colors.white : null),
         ),
         const SizedBox(
           height: 3.0,

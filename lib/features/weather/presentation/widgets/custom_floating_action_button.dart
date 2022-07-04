@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -13,15 +14,15 @@ FloatingActionButton customFloatingActionButton(BuildContext context) {
         builder: (_) {
           return AlertDialog(
             backgroundColor: const Color.fromARGB(255, 52, 101, 156),
-            title: const Text(
-              'Yout city: ',
-              style: TextStyle(color: Colors.white),
+            title: Text(
+              'your_city'.tr(),
+              style: const TextStyle(color: Colors.white),
             ),
             content: TextField(
               onChanged: (value) => city = value,
-              decoration: const InputDecoration(
-                hintText: "Input the city here: ",
-                hintStyle: TextStyle(color: Colors.white),
+              decoration: InputDecoration(
+                hintText: "input_city".tr(),
+                hintStyle: const TextStyle(color: Colors.white),
               ),
               controller: textController,
               style: const TextStyle(color: Colors.white),
@@ -34,9 +35,9 @@ FloatingActionButton customFloatingActionButton(BuildContext context) {
                       .add(WeatherEvent.loadApi(city: city));
                   Navigator.pop(context);
                 },
-                child: const Text(
-                  'SUBMIT',
-                  style: TextStyle(color: Colors.white, fontSize: 15.0),
+                child: Text(
+                  'submit'.tr(),
+                  style: const TextStyle(color: Colors.white, fontSize: 15.0),
                 ),
               )
             ],

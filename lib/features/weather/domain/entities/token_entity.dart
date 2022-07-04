@@ -15,6 +15,6 @@ class TokenEntity extends Equatable {
   List<Object?> get props => [
         isValid,
         token,
-        id
+        id,
       ];
 }
