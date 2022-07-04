@@ -57,7 +57,7 @@ if (keystorePropertiesFile.exists()) {
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
     }
-
+ /*
     signingConfigs {
         release {
             keyAlias keystoreProperties['keyAlias']
@@ -72,6 +72,7 @@ if (keystorePropertiesFile.exists()) {
            signingConfig signingConfigs.release
         }
     }
+    */
 
 }
 
